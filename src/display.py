@@ -1,5 +1,6 @@
 from PyQt5 import QtWidgets
 import sys 
+import _yaml
 
 app = QtWidgets.QApplication(sys.argv)
 window = QtWidgets.QWidget()
