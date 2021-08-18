@@ -1,6 +1,9 @@
 from PyQt5 import QtWidgets
 import sys 
-import _yaml
+import yaml
+
+with open("config/app.yaml") as f:
+    configs = yaml.load(f, Loader=yaml.FullLoader)
 
 app = QtWidgets.QApplication(sys.argv)
 window = QtWidgets.QWidget()
