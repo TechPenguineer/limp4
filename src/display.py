@@ -1,6 +1,6 @@
 import sys
 from PyQt5 import QtCore, QtWidgets
-
+from events.openFile import *
 
 class Window(QtWidgets.QMainWindow):
 
@@ -18,6 +18,7 @@ class Window(QtWidgets.QMainWindow):
         extractAction.setStatusTip('Leave The App')
 
         extractAction.triggered.connect(self.close_application)
+        
         self.statusBar()
 
         mainMenu = self.menuBar()
@@ -38,6 +39,8 @@ class Window(QtWidgets.QMainWindow):
 def run():
     app = QtWidgets.QApplication(sys.argv)
     GUI = Window()
+    limp4FS.openFileDialogEvent(app)
+
     sys.exit(app.exec_())
 
 run()
