@@ -32,7 +32,6 @@ class Window(QtWidgets.QMainWindow):
         self.show()
 
     def close_application(self):
-        print("whooaaaa so custom!!!")
         sys.exit()
 
 
