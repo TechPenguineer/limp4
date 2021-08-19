@@ -1,15 +1,42 @@
-from PyQt5 import QtWidgets
-import sys 
-import yaml
+import sys
+from PyQt5 import QtCore, QtWidgets
 
 
+class Window(QtWidgets.QMainWindow):
 
-app = QtWidgets.QApplication(sys.argv)
-window = QtWidgets.QWidget()
+    def __init__(self):
+        super(Window, self).__init__()
+        self.setGeometry(50, 50, 500, 300)
+        self.setWindowTitle("LIMP4")
 
-window.resize(500,500)
-window.move(100,100)
-window.show()
-window.setWindowTitle("Limp4")
+        extractAction = QtWidgets.QAction("&GET TO THE CHOPPAH!!!", self)
+        extractAction.setShortcut("Ctrl+Q")
+        extractAction.setStatusTip('Leave The App')
+        extractAction.triggered.connect(self.close_application)
 
-sys.exit(app.exec_())
+        self.statusBar()
+
+        mainMenu = self.menuBar()
+        fileMenu = mainMenu.addMenu('&File')
+        fileMenu.addAction(extractAction)
+        
+        self.home()
+
+    def home(self):
+        btn = QtWidgets.QPushButton("Quit", self)
+        btn.clicked.connect(self.close_application)
+        btn.resize(btn.minimumSizeHint())
+        btn.move(0,100)
+        self.show()
+
+    def close_application(self):
+        print("whooaaaa so custom!!!")
+        sys.exit()
+
+
+def run():
+    app = QtWidgets.QApplication(sys.argv)
+    GUI = Window()
+    sys.exit(app.exec_())
+
+run()
